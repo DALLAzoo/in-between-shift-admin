@@ -2040,4 +2040,30 @@ if ('serviceWorker' in navigator) {
   });
 })();
 </script>
+<script id="ibsAdminTimeAutoColon">
+/* 관리자 예약 시작/종료 시간: 모바일 숫자 키패드에서 HHMM -> HH:MM */
+(function () {
+  function attachTimeMask(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    function normalize() {
+      const digits = el.value.replace(/\D/g, '').slice(0, 4);
+      const formatted = digits.length > 2 ? digits.slice(0, 2) + ':' + digits.slice(2) : digits;
+      if (el.value !== formatted) el.value = formatted;
+    }
+    el.addEventListener('input', normalize);
+    el.addEventListener('paste', () => setTimeout(normalize, 0));
+    el.addEventListener('blur', normalize);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      attachTimeMask('raStart');
+      attachTimeMask('raEnd');
+    }, { once: true });
+  } else {
+    attachTimeMask('raStart');
+    attachTimeMask('raEnd');
+  }
+})();
+</script>
 </body></html>
