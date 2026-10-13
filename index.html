@@ -643,11 +643,31 @@ html.ibs-admin-authenticated #ibsStandaloneAdminDashboard #sourceToc{display:blo
 #ibsStandaloneAdminDashboard #siteStatus .ss-status-grid{width:100%!important}
 
 @media(max-width:800px){html.ibs-admin-authenticated body.mobile-page-mode #ibsStandaloneAdminDashboard #ledger{display:block!important}}
+
+#ibsStandaloneAdminDashboard .ibs-admin-nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px;position:sticky;top:0;z-index:20;background:#141318;padding:10px 0;border-bottom:1px solid #ffffff25}
+#ibsStandaloneAdminDashboard .ibs-admin-nav a{color:#f4e1ef;background:#302936;border:1px solid #71586d;border-radius:999px;padding:9px 12px;text-decoration:none;font-size:12px;font-weight:700}
+#ibsStandaloneAdminDashboard .ibs-customer-preview{margin:24px 0;padding:18px;border:1px solid #6a5268;border-radius:16px;background:#201c25}
+#ibsStandaloneAdminDashboard .ibs-customer-preview h2{font-size:19px;color:#f3dba9;margin:0 0 12px}
+#ibsStandaloneAdminDashboard .ibs-customer-preview p{font-size:13px;line-height:1.7;color:#ded1dc}
+#ibsStandaloneAdminDashboard .ibs-preview-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+#ibsStandaloneAdminDashboard .ibs-preview-actions button,#ibsStandaloneAdminDashboard .ibs-preview-actions a{background:#44364b;border:1px solid #a78aab;color:#fff;border-radius:10px;padding:11px 13px;font-size:13px;text-decoration:none;cursor:pointer}
+#ibsStandaloneAdminDashboard #ibsCustomerPreviewFrame{display:block;width:100%;height:600px;background:#fff;border:1px solid #6c6171;border-radius:12px}
+#ibsStandaloneAdminDashboard .ibs-preview-note{font-size:12px!important;color:#bdb0c2!important}
+#ibsAdminStatusSlot,#ibsAdminReservationSlot,#ibsCustomerPreview,#ibsAdminLedgerSlot,#ibsAdminTocSlot{scroll-margin-top:90px}
+@media(max-width:600px){#ibsStandaloneAdminDashboard .ibs-admin-nav{position:static}#ibsStandaloneAdminDashboard #ibsCustomerPreviewFrame{height:540px}}
 </style></head><body><div id="ibsStandaloneAdminDashboard"><div class="ibs-admin-shell">
 <div style="font-size:12px;letter-spacing:.16em;color:#c9a9c7">IN-BETWEEN SHIFT</div>
 <h1>관리자 대시보드</h1><p class="ibs-admin-sub">예약시간 관리 · 고객장부 · 사이트 수정 목차</p>
-<div id="ibsAdminInstallSlot"></div><div class="ibs-admin-status-title">현재 상담 운영 상태 <small>고객용 화면에 표시되는 상태를 확인합니다</small></div><div id="ibsAdminStatusSlot"></div><div id="ibsAdminReservationSlot"></div>
-<div id="ibsAdminLedgerSlot"></div><div id="ibsAdminTocSlot"></div>
+<nav class="ibs-admin-nav" aria-label="관리자 메뉴">
+<a href="#ibsAdminStatusSlot">운영 상태</a><a href="#ibsAdminReservationSlot">예약시간 관리</a><a href="#ibsCustomerPreview">고객 예약·가격 확인</a><a href="#ibsAdminLedgerSlot">고객장부</a><a href="#ibsAdminTocSlot">사이트 관리</a>
+</nav><div id="ibsAdminInstallSlot"></div><div class="ibs-admin-status-title">현재 상담 운영 상태 <small>고객용 화면에 표시되는 상태를 확인합니다</small></div><div id="ibsAdminStatusSlot"></div><div id="ibsAdminReservationSlot"></div>
+<section id="ibsCustomerPreview" class="ibs-customer-preview" aria-label="고객용 예약 및 상담 가격 확인">
+<h2>고객용 예약 · 상담 가격 확인</h2>
+<p>관리자에서 예약 접수를 닫거나 예약 가능 시간을 바꾼 뒤, 실제 고객용 페이지에서 어떻게 보이는지 확인하는 곳입니다. 아래 화면은 <strong>고객용 사이트를 직접 불러옵니다.</strong></p>
+<div class="ibs-preview-actions"><button type="button" id="ibsPreviewRefresh">고객 화면 새로고침</button><a href="https://dallazoo.github.io/in-between-shift-pages/#prices" target="_blank" rel="noopener noreferrer">고객용 예약·가격 페이지 열기 ↗</a></div>
+<iframe id="ibsCustomerPreviewFrame" title="실제 고객용 사이트 예약 및 상담 가격 미리보기" loading="lazy" src="https://dallazoo.github.io/in-between-shift-pages/#prices" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<p class="ibs-preview-note">고객용 화면을 그대로 불러오는 미리보기입니다. 변경 직후에는 위의 ‘고객 화면 새로고침’을 눌러 확인하세요. 실제 접수 차단 여부는 고객용 페이지에서 별도로 테스트해야 합니다.</p>
+</section><div id="ibsAdminLedgerSlot"></div><div id="ibsAdminTocSlot"></div>
 <p class="ibs-admin-warning">고객장부는 현재 이 브라우저에 저장되는 시제품입니다. 다른 기기와 자동 동기화되지 않으며 실제 고객 정보 보관 용도로 사용하기 전 별도의 접근 권한 보호가 필요합니다.</p>
 </div></div>
 <script id="ibsStandaloneAdminBootstrap">(function(){
@@ -664,6 +684,7 @@ html.ibs-admin-authenticated #ibsStandaloneAdminDashboard #sourceToc{display:blo
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();</script>
 
+<script id="ibsCustomerPreviewRefreshScript">(function(){function bind(){var b=document.getElementById('ibsPreviewRefresh'),f=document.getElementById('ibsCustomerPreviewFrame');if(!b||!f)return;b.addEventListener('click',function(){f.src='https://dallazoo.github.io/in-between-shift-pages/?preview_refresh='+Date.now()+'#prices';});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();})();</script>
 <!-- SECTION: MOBILE-SCROLL-HINT | 추가 내용이 있을 때 우측 하단에 밝게 점멸하는 형광 MORE 삼각형 -->
 <div class="mobile-scroll-hint" id="mobileScrollHint" aria-hidden="true"><span class="more-triangle"><span class="more-label">MORE</span></span></div>
 
