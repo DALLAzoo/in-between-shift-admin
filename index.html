@@ -643,7 +643,46 @@ html.ibs-admin-authenticated #ibsStandaloneAdminDashboard #sourceToc{display:blo
 #ibsStandaloneAdminDashboard #siteStatus .ss-status-grid{width:100%!important}
 
 @media(max-width:800px){html.ibs-admin-authenticated body.mobile-page-mode #ibsStandaloneAdminDashboard #ledger{display:block!important}}
-</style></head><body><div id="ibsStandaloneAdminDashboard"><div class="ibs-admin-shell">
+</style><style id="ibsAdminStatusReadable20261013">
+/* 관리자 상태 영역: 고객용과 같은 읽기 쉬운 2행 3열 배치 */
+@media(max-width:480px){
+ #ibsStandaloneAdminDashboard #siteStatus .ss-static-summary{
+  grid-template-columns:minmax(0,1fr) 88px!important;column-gap:8px!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-status-card{
+  grid-template-columns:minmax(0,31%) minmax(0,69%)!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-status-card .ss-badges{
+  grid-template-columns:minmax(0,42%) minmax(0,58%)!important;gap:4px!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-status-card .ss-status-name{
+  font-size:11px!important;letter-spacing:-.3px!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-status-card .ss-pill{
+  font-size:11px!important;letter-spacing:-.35px!important;line-height:1.4!important;
+  word-break:keep-all!important;overflow-wrap:normal!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-alert-row:not([hidden]){
+  display:flex!important;grid-column:2!important;grid-row:3!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-alert{min-height:96px!important;padding:8px 3px!important;}
+}
+@media(min-width:481px){
+ #ibsStandaloneAdminDashboard #siteStatus .ss-static-summary{
+  grid-template-columns:minmax(0,1fr) 100px!important;column-gap:10px!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-alert-row:not([hidden]){
+  display:flex!important;grid-column:2!important;grid-row:3!important;
+ }
+}
+@media(max-width:355px){
+ #ibsStandaloneAdminDashboard #siteStatus .ss-static-summary{
+  grid-template-columns:minmax(0,1fr) 76px!important;column-gap:5px!important;
+ }
+ #ibsStandaloneAdminDashboard #siteStatus .ss-status-card .ss-pill{font-size:10.5px!important;}
+}
+</style>
+</head><body><div id="ibsStandaloneAdminDashboard"><div class="ibs-admin-shell">
 <div style="font-size:12px;letter-spacing:.16em;color:#c9a9c7">IN-BETWEEN SHIFT</div>
 <h1>관리자 대시보드</h1><p class="ibs-admin-sub">예약시간 관리 · 고객장부 · 사이트 수정 목차</p>
 <div id="ibsAdminInstallSlot"></div><div class="ibs-admin-status-title">현재 상담 운영 상태 <small>고객용 화면에 표시되는 상태를 확인합니다</small></div><div id="ibsAdminStatusSlot"></div><div id="ibsAdminReservationSlot"></div>
