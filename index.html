@@ -634,17 +634,26 @@ html.ibs-admin-authenticated #ibsStandaloneAdminDashboard #sourceToc{display:blo
 #ibsStandaloneAdminDashboard .ibs-install-wrap{margin:12px 0 24px}
 #ibsStandaloneAdminDashboard #ibsInstallButton{display:inline-flex!important}
 #ibsStandaloneAdminDashboard .ibs-admin-warning{font-size:12px;color:#c5b9c2;line-height:1.65;margin:8px 0 18px}
+/* 관리자 페이지에는 고객용 소개/신청 UI를 노출하지 않고 운영 상태만 옮겨 표시 */
+#ibsStandaloneAdminDashboard .ibs-admin-status-title{font-size:16px;font-weight:800;margin:22px 0 9px;color:#f2dbab}
+#ibsStandaloneAdminDashboard .ibs-admin-status-title small{display:block;font-size:12px;font-weight:400;color:#bdb1bd;margin-top:4px}
+#ibsStandaloneAdminDashboard #siteStatus{display:block!important;max-width:920px!important;margin:0 0 24px!important;position:relative!important}
+#ibsStandaloneAdminDashboard #siteStatus .ss-alert-row{display:none!important}
+#ibsStandaloneAdminDashboard #siteStatus .ss-static-summary{grid-template-columns:minmax(0,1fr)!important}
+#ibsStandaloneAdminDashboard #siteStatus .ss-status-grid{width:100%!important}
+
 @media(max-width:800px){html.ibs-admin-authenticated body.mobile-page-mode #ibsStandaloneAdminDashboard #ledger{display:block!important}}
 </style></head><body><div id="ibsStandaloneAdminDashboard"><div class="ibs-admin-shell">
 <div style="font-size:12px;letter-spacing:.16em;color:#c9a9c7">IN-BETWEEN SHIFT</div>
 <h1>관리자 대시보드</h1><p class="ibs-admin-sub">예약시간 관리 · 고객장부 · 사이트 수정 목차</p>
-<div id="ibsAdminInstallSlot"></div><div id="ibsAdminReservationSlot"></div>
+<div id="ibsAdminInstallSlot"></div><div class="ibs-admin-status-title">현재 상담 운영 상태 <small>고객용 화면에 표시되는 상태를 확인합니다</small></div><div id="ibsAdminStatusSlot"></div><div id="ibsAdminReservationSlot"></div>
 <div id="ibsAdminLedgerSlot"></div><div id="ibsAdminTocSlot"></div>
 <p class="ibs-admin-warning">고객장부는 현재 이 브라우저에 저장되는 시제품입니다. 다른 기기와 자동 동기화되지 않으며 실제 고객 정보 보관 용도로 사용하기 전 별도의 접근 권한 보호가 필요합니다.</p>
 </div></div>
 <script id="ibsStandaloneAdminBootstrap">(function(){
   function move(id,slot){const el=document.getElementById(id),parent=document.getElementById(slot);if(el&&parent)parent.appendChild(el)}
   function init(){
+    move('siteStatus','ibsAdminStatusSlot');
     move('reservationAdmin','ibsAdminReservationSlot');
     move('ledger','ibsAdminLedgerSlot');
     move('sourceToc','ibsAdminTocSlot');
